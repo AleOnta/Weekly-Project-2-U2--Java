@@ -31,7 +31,7 @@ public class EmployeeService {
 	public String persistEmployee(Employee e) {
 		if (!employeeRepo.existsByEmail(e.getEmail())) {
 			employeeRepo.save(e);
-			return "User correctly persisted on Database";
+			return "Employee correctly persisted on Database";
 		} else {
 			throw new EntityExistsException("Email already exists on Database!");
 		}
@@ -40,7 +40,7 @@ public class EmployeeService {
 	public String updateEmployee(Employee e) {
 		if (employeeRepo.existsById(e.getId())) {
 			employeeRepo.save(e);
-			return "User correctly updated on Database";
+			return "Employee correctly updated on Database";
 		} else {
 			throw new EntityNotFoundException("Employee doesn't exists on Database!");
 		}
@@ -49,7 +49,7 @@ public class EmployeeService {
 	public String deleteEmployee(Employee e) {
 		if (employeeRepo.existsById(e.getId())) {
 			employeeRepo.delete(e);
-			return "User correctly removed from Database";
+			return "Employee correctly removed from Database";
 		} else {
 			throw new EntityNotFoundException("Employee doesn't exists on Database!");
 		}
@@ -58,7 +58,7 @@ public class EmployeeService {
 	public String deleteEmployee(Long id) {
 		if (employeeRepo.existsById(id)) {
 			employeeRepo.deleteById(id);
-			return "User correctly removed from Database";
+			return "Employee correctly removed from Database";
 		} else {
 			throw new EntityNotFoundException("Employee doesn't exists on Database!");
 		}

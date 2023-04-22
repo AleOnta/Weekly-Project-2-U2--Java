@@ -1,6 +1,7 @@
 package com.device_manager.model;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +38,7 @@ public class Employee {
 	@Column(nullable = false, unique = true)
 	private String email;
 	
+	@JsonIgnoreProperties("owner")
 	@OneToMany(mappedBy = "owner")
 	private List<Device> devices;
 	
