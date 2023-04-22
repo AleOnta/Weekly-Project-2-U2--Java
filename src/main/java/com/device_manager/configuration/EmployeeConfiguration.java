@@ -24,7 +24,7 @@ public class EmployeeConfiguration {
 	
 	@Bean(name = "fakeEmployee")
 	@Scope("prototype")
-	public Employee paramsEmployee() {
+	public Employee fakeEmployee() {
 		Faker f = Faker.instance(new Locale("en-US"));
 		String firstname = f.name().firstName();
 		String lastname = f.name().lastName();

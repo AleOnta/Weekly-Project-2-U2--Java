@@ -28,7 +28,7 @@ public class DeviceConfiguration {
 	
 	@Bean(name = "fakeDevice")
 	@Scope("prototype")
-	public Device paramsDevice() {
+	public Device fakeDevice() {
 		Faker f = Faker.instance(new Locale("en-US"));
 		int rand_one = f.number().numberBetween(1, 5);
 		int rand_two = f.number().numberBetween(1, 5);
