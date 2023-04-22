@@ -31,24 +31,29 @@ public class DeviceController {
 		return new ResponseEntity<Device>(deviceService.findDeviceById(id), HttpStatus.FOUND);
 	}
 	
+	@GetMapping("/paged/available")
+	public ResponseEntity<Page<Device>> findByStatusAvailable(Pageable pageable) {
+		return new ResponseEntity<Page<Device>>(deviceService.findDeviceByStatusAvailable(pageable), HttpStatus.OK);
+	}
+	
 	@GetMapping("/paged/type/{type}")
 	public ResponseEntity<Page<Device>> findDeviceByType(@PathVariable E_DeviceType type, Pageable pageable) {
-		return new ResponseEntity<Page<Device>>( deviceService.findDeviceByType(type, pageable), HttpStatus.FOUND);
+		return new ResponseEntity<Page<Device>>( deviceService.findDeviceByType(type, pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping("/paged/status/{status}")
 	public ResponseEntity<Page<Device>> findDeviceByStatus(@PathVariable E_DeviceStatus status, Pageable pageable) {
-		return new ResponseEntity<Page<Device>>( deviceService.findDeviceByStatus(status, pageable), HttpStatus.FOUND);
+		return new ResponseEntity<Page<Device>>( deviceService.findDeviceByStatus(status, pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping
 	public ResponseEntity<List<Device>> getAllDevice() {
-		return new ResponseEntity<List<Device>>(deviceService.findAllDevice(), HttpStatus.FOUND);
+		return new ResponseEntity<List<Device>>(deviceService.findAllDevice(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/paged")
 	public ResponseEntity<Page<Device>> getAllDevice(Pageable pageable) {
-		return new ResponseEntity<Page<Device>>(deviceService.findAllDevice(pageable), HttpStatus.FOUND);
+		return new ResponseEntity<Page<Device>>(deviceService.findAllDevice(pageable), HttpStatus.OK);
 	}
 	
 	@PostMapping
@@ -62,6 +67,16 @@ public class DeviceController {
 	public ResponseEntity<String> updateDevice(@RequestBody Device d) {
 		return new ResponseEntity<String>(deviceService.updateDevice(d), HttpStatus.OK);
 	}
+	
+	
+	  @PutMapping("/{e_id}/{d_id}")
+	  
+	  @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')") public
+	  ResponseEntity<String> linkDeviceToEmployee(@PathVariable Long
+	  e_id, @PathVariable Long d_id) { return new
+	  ResponseEntity<String>(deviceService.linkDeviceToEmployee(e_id, d_id),
+	  HttpStatus.OK); }
+	 
 	
 	@DeleteMapping
 	@PreAuthorize("hasRole('ADMIN')")
