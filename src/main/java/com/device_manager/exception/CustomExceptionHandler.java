@@ -1,7 +1,5 @@
 package com.device_manager.exception;
 
-import java.rmi.AlreadyBoundException;
-
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +26,9 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 	ResponseEntity<String> manageDataIntegrityViolationException(DataIntegrityViolationException e) {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
 	}
-
+	
+	@ExceptionHandler(NullPointerException.class)
+	ResponseEntity<String> manageNullPointerException(NullPointerException e) {
+		return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	}
 }

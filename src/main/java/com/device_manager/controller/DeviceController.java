@@ -27,31 +27,37 @@ public class DeviceController {
 	@Autowired DeviceService deviceService;
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<Device> getDeviceById(@PathVariable Long id) {
 		return new ResponseEntity<Device>(deviceService.findDeviceById(id), HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/paged/available")
+	@PreAuthorize("isAuthenticated()")
 	public ResponseEntity<Page<Device>> findByStatusAvailable(Pageable pageable) {
 		return new ResponseEntity<Page<Device>>(deviceService.findDeviceByStatusAvailable(pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping("/paged/type/{type}")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<Page<Device>> findDeviceByType(@PathVariable E_DeviceType type, Pageable pageable) {
 		return new ResponseEntity<Page<Device>>( deviceService.findDeviceByType(type, pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping("/paged/status/{status}")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<Page<Device>> findDeviceByStatus(@PathVariable E_DeviceStatus status, Pageable pageable) {
 		return new ResponseEntity<Page<Device>>( deviceService.findDeviceByStatus(status, pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<List<Device>> getAllDevice() {
 		return new ResponseEntity<List<Device>>(deviceService.findAllDevice(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/paged")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<Page<Device>> getAllDevice(Pageable pageable) {
 		return new ResponseEntity<Page<Device>>(deviceService.findAllDevice(pageable), HttpStatus.OK);
 	}
@@ -68,16 +74,18 @@ public class DeviceController {
 		return new ResponseEntity<String>(deviceService.updateDevice(d), HttpStatus.OK);
 	}
 	
+	@PutMapping("/add/{e_id}/{d_id}")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')") 
+	public ResponseEntity<String> linkDeviceToEmployee(@PathVariable Long e_id, @PathVariable Long d_id) { 
+		return new ResponseEntity<String>(deviceService.linkDeviceToEmployee(e_id, d_id), HttpStatus.OK); 
+	}
 	
-	  @PutMapping("/{e_id}/{d_id}")
-	  
-	  @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')") public
-	  ResponseEntity<String> linkDeviceToEmployee(@PathVariable Long
-	  e_id, @PathVariable Long d_id) { return new
-	  ResponseEntity<String>(deviceService.linkDeviceToEmployee(e_id, d_id),
-	  HttpStatus.OK); }
+	@PutMapping("/remove/{d_id}")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')") 
+	public ResponseEntity<String> unlinkDeviceToEmployee(@PathVariable Long d_id) { 
+		return new ResponseEntity<String>(deviceService.unlinkDeviceFromEmployee(d_id), HttpStatus.OK); 
+	}
 	 
-	
 	@DeleteMapping
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<String> deleteDevice(@RequestBody Device d) {

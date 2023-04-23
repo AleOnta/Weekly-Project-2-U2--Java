@@ -1,18 +1,20 @@
 package com.device_manager.configuration;
 
 import java.util.Locale;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-
 import com.device_manager.model.Device;
 import com.device_manager.model.E_DeviceStatus;
 import com.device_manager.model.E_DeviceType;
+import com.device_manager.service.DeviceService;
 import com.github.javafaker.Faker;
 
 @Configuration
 public class DeviceConfiguration {
+	
+	@Autowired private DeviceService d_service;
 
 	@Bean(name = "customDevice")
 	@Scope("singleton")
@@ -31,31 +33,11 @@ public class DeviceConfiguration {
 	public Device fakeDevice() {
 		Faker f = Faker.instance(new Locale("en-US"));
 		int rand_one = f.number().numberBetween(1, 5);
-		int rand_two = f.number().numberBetween(1, 5);
-		return Device.builder().type(fakeType(rand_one)).status(fakeStatus(rand_two)).owner(null).build();
-	}
-	
-	// TO MOVE IN SERVICE
-	private E_DeviceType fakeType(int random) {
-		E_DeviceType toReturn = null;
-		switch(random) {
-		case 1 -> toReturn = E_DeviceType.SMARTPHONE;
-		case 2 -> toReturn = E_DeviceType.LAPTOP;
-		case 3 -> toReturn = E_DeviceType.DESKTOP;
-		case 4 -> toReturn = E_DeviceType.HARDDRIVE;
-		case 5 -> toReturn = E_DeviceType.VEHICLE;
+		int rand_two = f.number().numberBetween(1, 4);
+		Device d = Device.builder().type(d_service.fakeType(rand_one)).status(d_service.fakeStatus(rand_two)).owner(null).build();
+		if (d.getStatus().equals(E_DeviceStatus.ASSIGNED)) {
+			d = d_service.setOwnerIfAssigned(d);
 		}
-		return toReturn;
-	}
-	
-	private E_DeviceStatus fakeStatus(int random) {
-		E_DeviceStatus toReturn = null;
-		switch(random) {
-		case 1 -> toReturn = E_DeviceStatus.AVAILABLE;
-		case 2 -> toReturn = E_DeviceStatus.ASSIGNED;
-		case 3 -> toReturn = E_DeviceStatus.ON_MAINTENANCE;
-		case 4 -> toReturn = E_DeviceStatus.ABANDONED;
-		}
-		return toReturn;
+		return d;
 	}
 }

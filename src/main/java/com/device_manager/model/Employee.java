@@ -38,7 +38,7 @@ public class Employee {
 	@Column(nullable = false, unique = true)
 	private String email;
 	
-	@JsonIgnoreProperties("owner")
+	@JsonIgnoreProperties({"owner", "status"})
 	@OneToMany(mappedBy = "owner")
 	private List<Device> devices;
 	

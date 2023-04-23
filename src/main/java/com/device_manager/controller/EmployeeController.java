@@ -25,16 +25,19 @@ public class EmployeeController {
 	@Autowired EmployeeService employeeService;
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
 		return new ResponseEntity<Employee>(employeeService.findEmployeeById(id), HttpStatus.FOUND);
 	}
 	
 	@GetMapping
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<List<Employee>> getAllEmployee() {
 		return new ResponseEntity<List<Employee>>(employeeService.findAllEmployee(), HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/paged")
+	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	public ResponseEntity<Page<Employee>> getAllEmployee(Pageable pageable) {
 		return new ResponseEntity<Page<Employee>>(employeeService.findAllEmployee(pageable), HttpStatus.FOUND);
 	}

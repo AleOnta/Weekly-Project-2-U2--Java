@@ -1,5 +1,7 @@
 package com.device_manager.auth.payload;
 
+import java.util.Set;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,5 +18,5 @@ public class RegisterDto {
     private String username;
     private String email;
     private String password;
-    //private Set<String> roles;
+    private Set<String> roles;
 }
