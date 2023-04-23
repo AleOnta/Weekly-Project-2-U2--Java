@@ -1,0 +1,999 @@
+{
+	"info": {
+		"_postman_id": "4a061843-4dc8-40a9-a96d-802a07c5f64d",
+		"name": "DeviceManager [WP2U2]",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25909383"
+	},
+	"item": [
+		{
+			"name": "JWT Authorization",
+			"item": [
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "Register USER-perTesting",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"User Tester\",\r\n    \"username\": \"TEST-r.user\",\r\n    \"email\": \"tester.U@example.com\",\r\n    \"password\": \"pOtf8r$4Nb!\",\r\n    \"roles\": [\"ROLE_USER\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register MODERATOR-perTesting",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Moderator Tester\",\r\n    \"username\": \"TEST-r.moderator\",\r\n    \"email\": \"tester.M@example.com\",\r\n    \"password\": \"pOtf8r$4Nb!\",\r\n    \"roles\": [\"ROLE_MODERATOR\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register ADMIN-perTesting",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 400ms\", function (){",
+											"    pm.expect(pm.response.responseTime).to.be.below(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Admin Tester\",\r\n    \"username\": \"TEST-r.admin\",\r\n    \"email\": \"tester.A@example.com\",\r\n    \"password\": \"d9sfgG8sle?\",\r\n    \"roles\": [\"ROLE_ADMIN\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login USER-perTesting",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"TEST-r.user\",\r\n    \"password\": \"pOtf8r$4Nb!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login MODERATOR-perTesting",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"TEST-r.moderator\",\r\n    \"password\": \"pOtf8r$4Nb!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login ADMIN-perTesting",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"TEST-r.admin\",\r\n    \"password\": \"d9sfgG8sle?\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "CRUD Employee",
+			"item": [
+				{
+					"name": "FindEmployeeById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employees/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "id of the employee to search for"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllEmployees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllEmployees - Paged",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employees/paged?page=0&size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees",
+								"paged"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "firstname,ASC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Ivan\",\r\n    \"lastname\": \"Destin\",\r\n    \"username\": \"Ivan_Destin\",\r\n    \"email\": \"I.Destin@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEmployee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function (){",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 17,\r\n    \"firstname\": \"Marcus\",\r\n    \"lastname\": \"Materazzi\",\r\n    \"username\": \"Marcus_Materazzi\",\r\n    \"email\": \"M.Materazzi@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 10,\r\n        \"firstname\": \"Alexander\",\r\n        \"lastname\": \"Cronin\",\r\n        \"username\": \"Alexander_Cronin\",\r\n        \"email\": \"A.Cronin@example.com\",\r\n        \"devices\": []\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveEmployeeById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employees/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9",
+									"description": "Id of the employee to delete"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD Device",
+			"item": [
+				{
+					"name": "FindDeviceById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "id of the device to search for"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindDeviceByType - Paged",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/paged/type/:type?page=0&size=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								"paged",
+								"type",
+								":type"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "4"
+								},
+								{
+									"key": "sort",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "SMARTPHONE",
+									"description": "type Enum per filtering"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindDeviceByStatus - Paged",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/paged/status/:status?page=0&size=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								"paged",
+								"status",
+								":status"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "4"
+								}
+							],
+							"variable": [
+								{
+									"key": "status",
+									"value": "AVAILABLE",
+									"description": "status Enum per filtering"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllDevicesAvailable -Paged",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/paged/available?page=0&size=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								"paged",
+								"available"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllDevices",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllDevices - Paged",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/paged?page=0&size=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								"paged"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "4"
+								},
+								{
+									"key": "sort",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewDevice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"DESKTOP\",\r\n    \"status\": \"AVAILABLE\",\r\n    \"owner\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/devices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateDevice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"type\": \"LAPTOP\",\r\n    \"status\": \"AVAILABLE\",\r\n    \"owner\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/devices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddDeviceToEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/add/:e_id/:d_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								"add",
+								":e_id",
+								":d_id"
+							],
+							"variable": [
+								{
+									"key": "e_id",
+									"value": "6",
+									"description": "id of the employee"
+								},
+								{
+									"key": "d_id",
+									"value": "4",
+									"description": "id of the device"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveDeviceFromEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/remove/:d_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								"remove",
+								":d_id"
+							],
+							"variable": [
+								{
+									"key": "d_id",
+									"value": "9",
+									"description": "id of the Device to set free"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveDevice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"type\": \"LAPTOP\",\r\n    \"status\": \"AVAILABLE\",\r\n    \"owner\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/devices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteDeviceById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4MjI1ODExMSwiZXhwIjoxNjgyODYyOTExfQ.Vm919AyqCVl44XUjyu5yqG3eW0NnCO25J6n3kUoXp3nWwZtRj9pNihqbGHlCb2AQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/devices/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"devices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8",
+									"description": "id of the device to delete"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
